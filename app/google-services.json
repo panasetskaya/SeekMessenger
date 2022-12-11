@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "417956741881",
+    "project_id": "seek-messenger-22d61",
+    "storage_bucket": "seek-messenger-22d61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417956741881:android:771665f0e579292db75828",
+        "android_client_info": {
+          "package_name": "com.panasetskaia.seekmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417956741881-s9fjsiponi4puak8qsmap3sf2mqtimdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA67MVPZjfy_Dv0N6qlpSfpwNhjSfhKqQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417956741881-s9fjsiponi4puak8qsmap3sf2mqtimdj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
