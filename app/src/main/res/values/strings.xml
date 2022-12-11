@@ -5,4 +5,5 @@
     <string name="email_hint">e-mail</string>
     <string name="register">next</string>
     <string name="new_registration">new profile</string>
+    <string name="auth_failed">Authentication failed.</string>
 </resources>
