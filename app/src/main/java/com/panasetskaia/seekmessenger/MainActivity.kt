@@ -2,9 +2,10 @@ package com.panasetskaia.seekmessenger
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,10 +28,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToLogin() {
-
+        replaceWithFragment(LoginFragment::class.java)
     }
 
     private fun goToChats() {
+        replaceWithFragment(ChatListFragment::class.java)
+    }
 
+    private fun replaceWithFragment(fragment: Class<out Fragment>) {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace(R.id.mainFragmentContainer,fragment, null)
+            addToBackStack(fragment.toString())
+        }
     }
 }

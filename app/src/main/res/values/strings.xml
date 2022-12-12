@@ -3,7 +3,14 @@
     <string name="login_hint">login</string>
     <string name="password_hint">password</string>
     <string name="email_hint">e-mail</string>
-    <string name="register">next</string>
+    <string name="register">Sign up</string>
     <string name="new_registration">new profile</string>
     <string name="auth_failed">Authentication failed.</string>
+    <string-array name="login_tabs">
+        <item>Log in</item>
+        <item>Sign up</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hola!</string> //todo: убрать
+    <string name="login">Log in</string>
+    <string name="welcome_back">Welcome back</string>
 </resources>
