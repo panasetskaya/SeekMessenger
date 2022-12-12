@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.commit
-import com.google.firebase.auth.FirebaseUser
 import com.panasetskaia.seekmessenger.databinding.FragmentTabSignUpBinding
 import com.panasetskaia.seekmessenger.utils.createUser
+import com.panasetskaia.seekmessenger.utils.validateEmail
+import com.panasetskaia.seekmessenger.utils.validatePassword
 
 
 class TabSignUpFragment : Fragment() {
@@ -39,6 +41,16 @@ class TabSignUpFragment : Fragment() {
                     ChatListFragment::class.java,
                     ::replaceWithFragment
                 )
+            } else if (!validateInputEmail(email)){
+                Toast.makeText(
+                    context, getString(R.string.no_such_email),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    context, getString(R.string.invalid_password),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -50,16 +62,14 @@ class TabSignUpFragment : Fragment() {
 
     private fun validateInputEmail(email: String?): Boolean {
         return if (email != null) {
-            email.length > 5
+            validateEmail(email)
         } else false
-        //todo: сделать валидацию
     }
 
     private fun validateInputPassword(password: String?): Boolean {
         return if (password != null) {
-            password.length > 8
+            validatePassword(password)
         } else false
-        //todo: сделать валидацию
     }
 
     private fun replaceWithFragment(fragment: Class<out Fragment>) {
