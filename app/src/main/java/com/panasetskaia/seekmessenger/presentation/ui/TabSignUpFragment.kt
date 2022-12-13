@@ -1,19 +1,23 @@
-package com.panasetskaia.seekmessenger
+package com.panasetskaia.seekmessenger.presentation.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.google.firebase.auth.FirebaseAuth
+import com.panasetskaia.seekmessenger.R
 import com.panasetskaia.seekmessenger.databinding.FragmentTabSignUpBinding
-import com.panasetskaia.seekmessenger.utils.createUser
 import com.panasetskaia.seekmessenger.utils.validateEmail
 import com.panasetskaia.seekmessenger.utils.validatePassword
 
 
 class TabSignUpFragment : Fragment() {
+
+    lateinit var auth: FirebaseAuth
 
     private var _binding: FragmentTabSignUpBinding? = null
     private val binding: FragmentTabSignUpBinding
@@ -30,18 +34,34 @@ class TabSignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+        setupButtonListener()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupButtonListener() {
         binding.signupButton.setOnClickListener {
             val email = binding.etEmail.text?.toString()
             val password = binding.etPassword.text?.toString()
             if (validateInputEmail(email) && validateInputPassword(password)) {
-                (activity as MainActivity).auth.createUser(
-                    email!!,
-                    password!!,
-                    requireActivity(),
-                    ChatListFragment::class.java,
-                    ::replaceWithFragment
-                )
-            } else if (!validateInputEmail(email)){
+                (activity as MainActivity).auth.createUserWithEmailAndPassword(email!!, password!!)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            Log.d("Firebase", "createUserWithEmail:success")
+                            replaceWithFragment(ChatListFragment::class.java)
+                        } else {
+                            Log.w("Firebase", "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                context, getString(R.string.auth_failed),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            } else if (!validateInputEmail(email)) {
                 Toast.makeText(
                     context, getString(R.string.no_such_email),
                     Toast.LENGTH_SHORT
@@ -53,11 +73,6 @@ class TabSignUpFragment : Fragment() {
                 ).show()
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun validateInputEmail(email: String?): Boolean {
@@ -73,7 +88,8 @@ class TabSignUpFragment : Fragment() {
     }
 
     private fun replaceWithFragment(fragment: Class<out Fragment>) {
-        parentFragmentManager.commit {
+        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.mainFragmentContainer, fragment, null)
             addToBackStack(fragment.toString())

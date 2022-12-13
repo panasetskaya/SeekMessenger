@@ -1,9 +1,9 @@
-package com.panasetskaia.seekmessenger.adapters
+package com.panasetskaia.seekmessenger.presentation.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.panasetskaia.seekmessenger.TabSignInFragment
-import com.panasetskaia.seekmessenger.TabSignUpFragment
+import com.panasetskaia.seekmessenger.presentation.ui.TabSignInFragment
+import com.panasetskaia.seekmessenger.presentation.ui.TabSignUpFragment
 
 class ParentCategoryPagerAdapter(
     parentFragment: Fragment

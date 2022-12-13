@@ -1,4 +1,4 @@
-package com.panasetskaia.seekmessenger
+package com.panasetskaia.seekmessenger.presentation.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
-import com.panasetskaia.seekmessenger.adapters.ParentCategoryPagerAdapter
+import com.panasetskaia.seekmessenger.R
+import com.panasetskaia.seekmessenger.presentation.ui.adapters.ParentCategoryPagerAdapter
 import com.panasetskaia.seekmessenger.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {

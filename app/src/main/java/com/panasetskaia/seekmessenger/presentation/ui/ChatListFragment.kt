@@ -1,12 +1,11 @@
-package com.panasetskaia.seekmessenger
+package com.panasetskaia.seekmessenger.presentation.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.panasetskaia.seekmessenger.databinding.FragmentChatListBinding
-import com.panasetskaia.seekmessenger.databinding.FragmentTabSignInBinding
 
 
 class ChatListFragment : Fragment() {

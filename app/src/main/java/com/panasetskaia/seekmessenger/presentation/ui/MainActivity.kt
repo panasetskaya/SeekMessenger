@@ -1,4 +1,4 @@
-package com.panasetskaia.seekmessenger
+package com.panasetskaia.seekmessenger.presentation.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.panasetskaia.seekmessenger.R
 
 class MainActivity : AppCompatActivity() {
 
