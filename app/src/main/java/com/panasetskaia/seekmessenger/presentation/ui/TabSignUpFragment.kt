@@ -14,7 +14,6 @@ import com.panasetskaia.seekmessenger.databinding.FragmentTabSignUpBinding
 import com.panasetskaia.seekmessenger.utils.validateEmail
 import com.panasetskaia.seekmessenger.utils.validatePassword
 
-
 class TabSignUpFragment : Fragment() {
 
     lateinit var auth: FirebaseAuth
